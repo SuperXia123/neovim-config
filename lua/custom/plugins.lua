@@ -24,9 +24,10 @@ local plugins = {
       )
     end,
   },
-  -- 基于LSP的代码结构树
+  -- 代码结构树option1
   {
     "simrat39/symbols-outline.nvim",
+    enabled = true,
     lazy = false,
     config = function ()
       require("symbols-outline").setup(
@@ -34,6 +35,24 @@ local plugins = {
       )
     end,
   },
+  -- 代码结构树option2
+  {
+    "stevearc/aerial.nvim",
+    enabled = false,
+    lazy = false,
+    config = function ()
+      require("aerial").setup(
+        require("custom.configs.aerial-config")
+      )
+    end,
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+       "nvim-treesitter/nvim-treesitter",
+       "nvim-tree/nvim-web-devicons"
+    },
+  }
+
 }
 
 return plugins
