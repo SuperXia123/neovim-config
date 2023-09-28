@@ -23,4 +23,14 @@ M.abc = {
   }
 }
 
+M.symbols_outline = {
+  n = {
+
+  },
+
+  i = {
+
+  }
+}
+
 return M
