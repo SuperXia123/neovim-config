@@ -27,7 +27,7 @@ local plugins = {
   -- 代码结构树option1
   {
     "simrat39/symbols-outline.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     config = function ()
       require("symbols-outline").setup(
@@ -38,7 +38,7 @@ local plugins = {
   -- 代码结构树option2
   {
     "stevearc/aerial.nvim",
-    enabled = false,
+    enabled = true,
     lazy = false,
     config = function ()
       require("aerial").setup(
