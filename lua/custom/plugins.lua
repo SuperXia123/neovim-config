@@ -51,8 +51,12 @@ local plugins = {
        "nvim-treesitter/nvim-treesitter",
        "nvim-tree/nvim-web-devicons"
     },
-  }
-
+  },
+  -- 可视化git-blame
+  {
+    "APZelos/blamer.nvim",
+    lazy = false,
+  },
 }
 
 return plugins
