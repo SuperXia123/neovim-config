@@ -64,6 +64,11 @@ local plugins = {
       require("diffview").setup()
     end
   },
+  -- 光标旁小窗显示完整commit信息
+  {
+    "rhysd/git-messenger.vim",
+    lazy = false,
+  }
 }
 
 return plugins
