@@ -56,6 +56,9 @@ local plugins = {
   {
     "APZelos/blamer.nvim",
     lazy = false,
+    init = function ()
+      require("custom.configs.blamer-config")
+    end
   },
   -- 独立标签页显示本地所有修改/文件历史修改
   {
