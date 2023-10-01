@@ -70,6 +70,7 @@ local plugins = {
   -- 光标旁小窗显示完整commit信息
   {
     "rhysd/git-messenger.vim",
+    enabled = false,
     lazy = false,
   }
 }
