@@ -72,7 +72,17 @@ local plugins = {
     "rhysd/git-messenger.vim",
     enabled = false,
     lazy = false,
-  }
+  },
+  -- formatter
+  {
+    "mhartington/formatter.nvim",
+    lazy = false,
+    init = function ()
+      require("formatter").setup(
+        require("custom.configs.formatter-config")
+      )
+    end
+  },
 }
 
 return plugins
