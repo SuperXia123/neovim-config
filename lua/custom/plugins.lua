@@ -38,7 +38,7 @@ local plugins = {
   -- 代码结构树option2
   {
     "stevearc/aerial.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     config = function ()
       require("aerial").setup(
