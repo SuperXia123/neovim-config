@@ -6,6 +6,8 @@ vim.cmd("syntax on")
 vim.opt.spelllang = {'en_us', 'cjk'}
 -- 使能驼峰变量的spell-check
 vim.opt.spelloptions = 'camel'
+-- 关闭首字母大写检查, see https://neovim.io/doc/user/options.html#'spellcapcheck'
+vim.opt.spellcapcheck = ''
 
 local autocmd = vim.api.nvim_create_autocmd
 local spell_augroup = vim.api.nvim_create_augroup("spell_augroup", { clear = true })
