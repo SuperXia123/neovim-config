@@ -20,15 +20,15 @@ local options = {
     layout_config = {
       horizontal = {
         prompt_position = "top",
-        preview_width = 0.55,
+        preview_width = 0.50,
         results_width = 0.8,
       },
       vertical = {
         mirror = false,
       },
-      width = 0.87,
+      width = 0.90,
       height = 0.80,
-      preview_cutoff = 50,
+      preview_cutoff = 82,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
     file_ignore_patterns = { "node_modules" },
