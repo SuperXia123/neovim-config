@@ -8,20 +8,16 @@ local opts = {
   log_level = vim.log.levels.WARN,
   -- All formatter configurations are opt-in
   filetype = {
-    -- Formatter configurations for filetype "lua" go here
-    -- and will be executed in order
-    lua = {
-      -- "formatter.filetypes.lua" defines default configurations for the
-      -- "lua" filetype
+    -- 模板
+    template = {
+      -- 可以从formatter默认配置加载
       require("formatter.filetypes.lua").stylua,
-
-      -- You can also define your own configuration
+      -- 也可以在此处自定义
       function()
         -- Supports conditional formatting
         if util.get_current_buffer_file_name() == "special.lua" then
           return nil
         end
-
         -- Full specification of configurations is down below and in Vim help
         -- files
         return {
@@ -35,47 +31,20 @@ local opts = {
           },
           stdin = true,
         }
-      end
+      end,
     },
-    -- Formatter configurations for filetype "cpp" go here
-    -- and will be executed in order
-    cpp = {
-      -- "formatter.filetypes.cpp" defines default configurations for the
-      -- "cpp" filetype
-      require("formatter.filetypes.cpp").clangformat,
 
-      -- You can also define your own configuration
-      function()
-        -- Supports conditional formatting
-        if util.get_current_buffer_file_name() == "special.cpp" then
-          return nil
-        end
-
-        -- Full specification of configurations is down below and in Vim help
-        -- files
-        return {
-          exe = "stycpp",
-          args = {
-            "--search-parent-directories",
-            "--stdin-filepath",
-            util.escape_path(util.get_current_buffer_file_path()),
-            "--",
-            "-",
-          },
-          stdin = true,
-        }
-      end
-    },
+    lua = { require("formatter.filetypes.lua").stylua },
+    cpp = { require("formatter.filetypes.cpp").clangformat },
 
     -- Use the special "*" filetype for defining formatter configurations on
     -- any filetype
     ["*"] = {
       -- "formatter.filetypes.any" defines default configurations for any
       -- filetype
-      require("formatter.filetypes.any").remove_trailing_whitespace
-    }
-  }
-
+      require("formatter.filetypes.any").remove_trailing_whitespace,
+    },
+  },
 }
 
 return opts
