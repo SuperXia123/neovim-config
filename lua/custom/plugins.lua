@@ -73,6 +73,9 @@ local plugins = {
   -- Debug插件3: 用于debug时代码侧文字显示
   {
     "theHamsta/nvim-dap-virtual-text",
+    init = function()
+      require("nvim-dap-virtual-text").setup(require "custom.configs.dap.dap-virtual-text")
+    end,
   },
 
   -----------------------------------------------------------------------------
