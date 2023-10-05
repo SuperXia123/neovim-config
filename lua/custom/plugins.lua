@@ -24,6 +24,34 @@ local plugins = {
       )
     end,
   },
+  -- 可视化git-blame
+  {
+    "APZelos/blamer.nvim",
+    lazy = false,
+    init = function ()
+      require("custom.configs.blamer-config")
+    end
+  },
+  -- 独立标签页显示本地所有修改/文件历史修改
+  {
+    "sindrets/diffview.nvim",
+    init = function ()
+      require("diffview").setup()
+    end
+  },
+  -- formatter
+  {
+    "mhartington/formatter.nvim",
+    lazy = false,
+    init = function ()
+      require("formatter").setup(
+        require("custom.configs.formatter-config")
+      )
+    end
+  },
+  -----------------------------------------------------------------------------
+  -- 以下为暂时关闭的插件
+  -----------------------------------------------------------------------------
   -- 代码结构树option1
   {
     "simrat39/symbols-outline.nvim",
@@ -52,36 +80,11 @@ local plugins = {
        "nvim-tree/nvim-web-devicons"
     },
   },
-  -- 可视化git-blame
-  {
-    "APZelos/blamer.nvim",
-    lazy = false,
-    init = function ()
-      require("custom.configs.blamer-config")
-    end
-  },
-  -- 独立标签页显示本地所有修改/文件历史修改
-  {
-    "sindrets/diffview.nvim",
-    init = function ()
-      require("diffview").setup()
-    end
-  },
   -- 光标旁小窗显示完整commit信息
   {
     "rhysd/git-messenger.vim",
     enabled = false,
     lazy = false,
-  },
-  -- formatter
-  {
-    "mhartington/formatter.nvim",
-    lazy = false,
-    init = function ()
-      require("formatter").setup(
-        require("custom.configs.formatter-config")
-      )
-    end
   },
 }
 
