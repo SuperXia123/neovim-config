@@ -28,4 +28,41 @@ M.abc = {
   }
 }
 
+M.dap = {
+  -- only works when they are explicitly loaded
+  plugin = true,
+  n = {
+    ["<leader>db"] = {
+      "<cmd> DapToggleBreakpoint <CR>",
+      "Add breakpoint at line",
+    },
+    ["<leader>dr"] = {
+      "<cmd> DapContinue <CR>",
+      "Start or continue the debugger",
+    },
+    ["<leader>dt"] = {
+      "<cmd> DapTerminate <CR>",
+      "Terminate the debugger",
+    },
+    ["<F6>"] = {
+      "<cmd> DapStepOver <CR>",
+      "Debug step over",
+    },
+    ["<F7>"] = {
+      "<cmd> DapStepInto <CR>",
+      "Debug step into",
+    },
+    ["<F9>"] = {
+      "<cmd> DapStepOut <CR>",
+      "Debug step out",
+    },
+  },
+  i = {
+
+  },
+  v = {
+
+  },
+}
+
 return M
