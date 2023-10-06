@@ -38,6 +38,7 @@ local plugins = {
   -- 独立标签页显示本地所有修改/文件历史修改
   {
     "sindrets/diffview.nvim",
+    command = "DiffViewOpen",
     init = function()
       require("diffview").setup()
     end,
@@ -45,20 +46,20 @@ local plugins = {
   -- formatter
   {
     "mhartington/formatter.nvim",
-    lazy = false,
+    command = "Format",
     init = function()
       require("formatter").setup(require "custom.configs.formatter-config")
     end,
   },
-  -- Debug插件1: DAP(Debug Adaptor Protocal)
+  -- DAP(Debug Adaptor Protocal)相关
   {
     "mfussenegger/nvim-dap",
     config = function()
       require("core.utils").load_mappings "dap"
-      require "custom.configs.dap.dap-config"
+      require "custom.configs.dap.dap-adapters"
+      require "custom.configs.dap.dap-symbols"
     end,
   },
-  -- Debug插件2: 用于debug时的展示窗
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
@@ -67,10 +68,9 @@ local plugins = {
     },
     config = function()
       require("dapui").setup()
-      require "custom.configs.dap.dap-ui-config"
+      require "custom.configs.dap.dap-events"
     end,
   },
-  -- Debug插件3: 用于debug时代码侧文字显示
   {
     "theHamsta/nvim-dap-virtual-text",
     init = function()

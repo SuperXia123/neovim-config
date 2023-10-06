@@ -1,6 +1,6 @@
 local dap = require "dap"
 
--- cpp的dap.adaptor配置
+-- cpp
 local cpp_debugger_port = "13000"
 dap.adapters.codelldb = {
   name = "codelldb server",
