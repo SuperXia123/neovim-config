@@ -77,6 +77,18 @@ local plugins = {
       require("nvim-dap-virtual-text").setup(require "custom.configs.dap.dap-virtual-text")
     end,
   },
+  -- runner
+  {
+    "MarcHamamji/runner.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    init = function()
+      require("custom.configs.coderunner")
+    end,
+  },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
