@@ -23,7 +23,7 @@ local plugins = {
     config = function()
       require("auto-save").setup(
         -- your config goes here
-        -- or just leave it emptu :)
+        -- or just leave it empty :)
       )
     end,
   },
@@ -72,7 +72,8 @@ local plugins = {
     end,
   },
   {
-    "theHamsta/nvim-dap-virtual-text",
+    "SuperXia123/nvim-dap-virtual-text",
+    -- "theHamsta/nvim-dap-virtual-text"
     init = function()
       require("nvim-dap-virtual-text").setup(require "custom.configs.dap.dap-virtual-text")
     end,
@@ -80,6 +81,7 @@ local plugins = {
   -- runner
   {
     "SuperXia123/runner.nvim",
+    -- "MarcHamamji/runner.nvim",
     event = "VeryLazy",
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -87,7 +89,7 @@ local plugins = {
     },
     init = function()
       require("core.utils").load_mappings "runner"
-      require("custom.configs.coderunner")
+      require "custom.configs.coderunner"
     end,
   },
 
@@ -97,7 +99,7 @@ local plugins = {
   -- 代码结构树option1
   {
     "simrat39/symbols-outline.nvim",
-    enabled = false,
+    enabled = true,
     lazy = false,
     config = function()
       require("symbols-outline").setup(require "custom.configs.symbols-outline-config")
