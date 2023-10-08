@@ -2,6 +2,17 @@ function SearchSymbols()
   vim.cmd "Telescope lsp_document_symbols symbol_width=60 show_line=false"
 end
 
+function TerminateDebug()
+  -- close dap-virtual-text
+  vim.cmd "DapVirtualTextExit"
+  -- close dap
+  vim.cmd "DapTerminate"
+  -- close dap-ui
+  require"dapui".close()
+  -- recover blamer status
+  vim.g.blamer_enabled = ENABLE_BLAMER
+end
+
 local M = {}
 
 -- In order to disable a default keymap, use
@@ -48,7 +59,7 @@ M.dap = {
     },
     -- 结束调试
     ["<leader>dt"] = {
-      "<cmd> DapTerminate <CR>",
+      ":lua TerminateDebug() <CR>",
       "Terminate the debugger",
     },
     -- 步进
