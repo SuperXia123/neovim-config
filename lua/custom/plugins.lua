@@ -79,13 +79,14 @@ local plugins = {
   },
   -- runner
   {
-    "MarcHamamji/runner.nvim",
+    "SuperXia123/runner.nvim",
     event = "VeryLazy",
     dependencies = {
       "nvim-telescope/telescope.nvim",
       dependencies = { "nvim-lua/plenary.nvim" },
     },
     init = function()
+      require("core.utils").load_mappings "runner"
       require("custom.configs.coderunner")
     end,
   },
