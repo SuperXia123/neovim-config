@@ -1,6 +1,9 @@
 -- 设置代码对齐线
 vim.opt.colorcolumn = "80"
 
+-- 控制是否开启blamer
+ENABLE_BLAMER = true
+
 -- 对spell-checking进行设置
 require "custom.configs.spellchecker-config"
 
