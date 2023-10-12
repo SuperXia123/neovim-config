@@ -3,6 +3,8 @@
 local function on_buf_enter()
   -- 光标位于注释行时，按下“o”新起的行不带注释
   vim.cmd "set formatoptions-=o"
+  -- 打印文件类型
+  -- print(vim.bo.filetype)
 end
 
 local buf_enter_group = vim.api.nvim_create_augroup("on_buf_enter", { clear = true })

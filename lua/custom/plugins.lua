@@ -1,3 +1,4 @@
+-- LSP
 local plugins = {
   {
     "neovim/nvim-lspconfig",
@@ -114,6 +115,22 @@ local plugins = {
     init = function()
       require("core.utils").load_mappings "runner"
       require "custom.configs.coderunner"
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    event = "VeryLazy",
+    init = function()
+      require "custom.configs.illuminate-config"
+    end,
+  },
+  {
+    "gelguy/wilder.nvim",
+    init = function()
+      require("wilder").setup {
+        modes = { ":", "/", "?" },
+      }
+      require "custom.configs.wilder-config"
     end,
   },
 
