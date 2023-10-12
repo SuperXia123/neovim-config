@@ -65,7 +65,7 @@ local plugins = {
     "sindrets/diffview.nvim",
     command = "DiffViewOpen",
     init = function()
-      require("diffview").setup()
+      require("diffview").setup(require "custom.configs.diffview-config")
     end,
   },
   -- formatter
