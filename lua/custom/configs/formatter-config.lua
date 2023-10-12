@@ -34,8 +34,22 @@ local opts = {
       end,
     },
 
+    cpp = {
+      function()
+        return {
+          exe = "clang-format",
+          args = {
+            "--style=file",
+            -- "-assume-filename",
+            -- util.escape_path(util.get_current_buffer_file_name()),
+          },
+          stdin = true,
+          try_node_modules = true,
+        }
+      end,
+    },
+
     lua = { require("formatter.filetypes.lua").stylua },
-    cpp = { require("formatter.filetypes.cpp").clangformat },
 
     -- Use the special "*" filetype for defining formatter configurations on
     -- any filetype
