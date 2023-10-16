@@ -271,6 +271,7 @@ M.telescope = {
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+    ["<C-t>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
@@ -444,6 +445,13 @@ M.gitsigns = {
         require("gitsigns").preview_hunk()
       end,
       "Preview hunk",
+    },
+
+    ["<leader>gsh"] = {
+      function()
+        require("gitsigns").stage_hunk()
+      end,
+      "Stage hunk",
     },
 
     ["<leader>gb"] = {
