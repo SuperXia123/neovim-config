@@ -35,10 +35,12 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "clangd",
-        "clang-format",
-        "codelldb",
-        "stylua",
+        "clang-format", --cpp formatter
+        "clangd", -- cpp lsp
+        "cpptools", -- cpp dap, including gdb
+
+        "lua-language-server",  -- lua lsp
+        "stylua", -- lua formatter
       },
     },
   },
