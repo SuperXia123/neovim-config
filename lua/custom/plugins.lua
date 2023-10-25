@@ -39,7 +39,7 @@ local plugins = {
         "clangd", -- cpp lsp
         "cpptools", -- cpp dap, including gdb
 
-        "lua-language-server",  -- lua lsp
+        "lua-language-server", -- lua lsp
         "stylua", -- lua formatter
       },
     },
@@ -105,10 +105,24 @@ local plugins = {
       require("nvim-dap-virtual-text").setup(require "custom.configs.dap.dap-virtual-text")
     end,
   },
+  {
+    "rcarriga/nvim-notify",
+  },
   -- runner
+  {
+    "dasupradyumna/launch.nvim",
+    -- add below plugins as per user requirement
+    lazy = false,
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-notify",
+    },
+    opts = {},
+  },
   {
     "SuperXia123/runner.nvim",
     -- "MarcHamamji/runner.nvim",
+    enabled = false,
     event = "VeryLazy",
     dependencies = {
       "nvim-telescope/telescope.nvim",
