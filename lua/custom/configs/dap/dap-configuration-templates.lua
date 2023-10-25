@@ -30,16 +30,19 @@ dap.configurations.cpp = {
 	},
   -- cppdbg, gdb
 	{
-		name = "cppdbg",
+		name = "launch",
 		type = "cppdbg",
 		request = "launch",
 		program = function()
-			return vim.fn.getcwd() .. "/build/Playground"
+			return vim.fn.getcwd() .. "/output/ndm_envmodel/ndm_envmodel"
 		end,
-		cwd = "${workspaceFolder}",
+		cwd = "${workspaceFolder}/output/ndm_envmodel",
+		environment = {
+			{ name = "LD_LIBRARY_PATH", value = "./lib/auto_common_lib" },
+		},
 		stopOnEntry = false,
-		args = {},
-		runInTerminal = false,
+		args = { "-c", "./config/dataflow/ndm_envmodel_process.json", "-w", "./" },
+		runInTerminal = true,
 	},
 }
 
