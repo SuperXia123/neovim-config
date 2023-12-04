@@ -13,7 +13,7 @@ local plugins = {
       require("core.utils").load_mappings "lspconfig"
 
       require("mason-lspconfig").setup {
-        ensure_installed = { "clangd" },
+        ensure_installed = { "clangd", "pyright" },
       }
 
       require("mason-lspconfig").setup_handlers {
@@ -109,6 +109,7 @@ local plugins = {
   {
     "dasupradyumna/launch.nvim",
     -- add below plugins as per user requirement
+    enabled = false,
     lazy = false,
     dependencies = {
       "mfussenegger/nvim-dap",
@@ -118,10 +119,14 @@ local plugins = {
   },
   {
     "folke/noice.nvim",
+    enabled = false,
     event = "VeryLazy",
     opts = {
       -- add any options here
     },
+    config = function()
+      require("noice").setup(require "custom.configs.noice-config")
+    end,
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
@@ -218,6 +223,22 @@ local plugins = {
     enabled = false,
     lazy = false,
   },
+  {
+    "lewis6991/satellite.nvim",
+    enabled = false,
+    lazy = false,
+    config = function()
+      require("satellite").setup(require "custom.configs.satellite-config")
+    end,
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    lazy = false,
+    version = "*",
+    config = true,
+  },
+  -- -- or
+  -- {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}}
 }
 
 return plugins
