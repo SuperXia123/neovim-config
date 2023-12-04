@@ -12,7 +12,7 @@ local opts = {
         col = (1 - float_width) * 0.5,
         width = float_width,
         height = float_height,
-        border = "single",
+        border = "rounded",
       },
       horizontal = { location = "rightbelow", split_ratio = .3, },
       vertical = { location = "rightbelow", split_ratio = .5 },
