@@ -10,3 +10,7 @@ lspconfig.clangd.setup {
   end,
   capacities = capacities,
 }
+
+lspconfig.pyright.setup {
+  on_attach
+}
