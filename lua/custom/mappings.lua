@@ -90,4 +90,17 @@ M.runner = {
   v = {},
 }
 
+function OpenBufferManager()
+  require("buffer_manager.ui").toggle_quick_menu()
+end
+M.buffer_manager = {
+  plugin = true,
+  n = { 
+    ["<C-t>"] = { ":lua OpenBufferManager() <CR>", "Manage buffers", }, 
+  },
+  i = {
+    ["<C-t>"] = { ":lua OpenBufferManager() <CR>", "Manage buffers", },
+  }
+}
+
 return M
