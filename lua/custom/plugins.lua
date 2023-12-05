@@ -232,13 +232,14 @@ local plugins = {
     end,
   },
   {
-    "akinsho/toggleterm.nvim",
-    lazy = false,
-    version = "*",
-    config = true,
-  },
-  -- -- or
-  -- {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}}
+    "j-morano/buffer_manager.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    init = function()
+      require("core.utils").load_mappings "buffer_manager"
+    end,
+  }
 }
 
 return plugins
