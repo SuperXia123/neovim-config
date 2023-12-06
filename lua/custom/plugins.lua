@@ -238,6 +238,7 @@ local plugins = {
     },
     init = function()
       require("core.utils").load_mappings "buffer_manager"
+      require("buffer_manager").setup(require "custom.configs.buffer-manager-config")
     end,
   }
 }
