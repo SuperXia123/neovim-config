@@ -167,26 +167,13 @@ local plugins = {
     end,
   },
   {
-    "zbirenbaum/neodim",
-    event = "LspAttach",
-    config = function()
-      require("neodim").setup {
-        refresh_delay = 1,
-        alpha = 0.7,
-        blend_color = "#000000",
-        hide = {
-          underline = true,
-          virtual_text = true,
-          signs = true,
-        },
-        regex = {
-          "[uU]nused",
-          "[nN]ever [rR]ead",
-          "[nN]ot [rR]ead",
-        },
-        priority = 128,
-        disable = {},
-      }
+    "j-morano/buffer_manager.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    init = function()
+      require("core.utils").load_mappings "buffer_manager"
+      require("buffer_manager").setup(require "custom.configs.buffer-manager-config")
     end,
   },
 
@@ -196,7 +183,7 @@ local plugins = {
   -- 代码结构树option1
   {
     "simrat39/symbols-outline.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     config = function()
       require("symbols-outline").setup(require "custom.configs.symbols-outline-config")
@@ -232,15 +219,29 @@ local plugins = {
     end,
   },
   {
-    "j-morano/buffer_manager.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    init = function()
-      require("core.utils").load_mappings "buffer_manager"
-      require("buffer_manager").setup(require "custom.configs.buffer-manager-config")
+    "zbirenbaum/neodim",
+    enabled = false,
+    event = "LspAttach",
+    config = function()
+      require("neodim").setup {
+        refresh_delay = 1,
+        alpha = 0.7,
+        blend_color = "#000000",
+        hide = {
+          underline = true,
+          virtual_text = true,
+          signs = true,
+        },
+        regex = {
+          "[uU]nused",
+          "[nN]ever [rR]ead",
+          "[nN]ot [rR]ead",
+        },
+        priority = 128,
+        disable = {},
+      }
     end,
-  }
+  },
 }
 
 return plugins
