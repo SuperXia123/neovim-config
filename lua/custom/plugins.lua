@@ -176,6 +176,14 @@ local plugins = {
       require("buffer_manager").setup(require "custom.configs.buffer-manager-config")
     end,
   },
+  -- multi-cursor
+  {
+    "mg979/vim-visual-multi",
+    event = "VeryLazy",
+    config = function()
+      vim.cmd "VMTheme neon"
+    end,
+  },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
