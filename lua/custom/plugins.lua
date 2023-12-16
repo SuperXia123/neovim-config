@@ -119,7 +119,7 @@ local plugins = {
   },
   {
     "folke/noice.nvim",
-    enabled = false,
+    -- enabled = false,
     event = "VeryLazy",
     opts = {
       -- add any options here
