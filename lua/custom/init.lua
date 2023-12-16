@@ -14,3 +14,10 @@ require "custom.helpers.workspace-loader"
 
 -- 进入buf时的配置, 这里的配置会覆写默认配置
 require "custom.helpers.configs-on-buf-enter"
+
+-- 自动读取文件变更
+-- 1. trigger `autoread` when files changes on disk
+vim.cmd "set autoread"
+vim.cmd "autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif"
+-- 2. notification after file change
+-- vim.cmd "autocmd FileChangedShellPost *  echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None"
