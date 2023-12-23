@@ -180,6 +180,20 @@ local plugins = {
       vim.cmd "VMTheme neon"
     end,
   },
+  {
+    "github/copilot.vim",
+    event = "VeryLazy",
+    enabled = false,
+  },
+  {
+    'gorbit99/codewindow.nvim',
+    init = function()
+      local codewindow = require('codewindow')
+      codewindow.setup(require "custom.configs.codewindow-config")
+      codewindow.apply_default_keybinds()
+    end,
+  },
+
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
