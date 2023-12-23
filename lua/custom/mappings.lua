@@ -101,12 +101,12 @@ function OpenBufferManager()
 end
 M.buffer_manager = {
   plugin = true,
-  n = { 
-    ["<C-t>"] = { ":lua OpenBufferManager() <CR>", "Manage buffers", }, 
+  n = {
+    ["<C-Tab>"] = { ":lua OpenBufferManager() <CR>", "Manage buffers" },
   },
   i = {
-    ["<C-t>"] = { ":lua OpenBufferManager() <CR>", "Manage buffers", },
-  }
+    ["<C-Tab>"] = { ":lua OpenBufferManager() <CR>", "Manage buffers" },
+  },
 }
 
 return M
