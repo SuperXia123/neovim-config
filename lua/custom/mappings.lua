@@ -8,7 +8,7 @@ function TerminateDebug()
   -- close dap
   vim.cmd "DapTerminate"
   -- close dap-ui
-  require"dapui".close()
+  require("dapui").close()
   -- recover blamer status
   vim.g.blamer_enabled = ENABLE_BLAMER
 end
@@ -36,6 +36,12 @@ M.abc = {
 
   i = {
     ["jk"] = { "<ESC>", "escape insert mode", opts = { nowait = true } },
+  },
+}
+
+M.neovide = {
+  n = {
+    ["<F11>"] = { ":lua vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen <CR>", "neovide fullscreen" },
   },
 }
 
