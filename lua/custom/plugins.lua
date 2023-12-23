@@ -38,7 +38,6 @@ local plugins = {
         "clang-format", --cpp formatter
         "clangd", -- cpp lsp
         "cpptools", -- cpp dap, including gdb
-
         "lua-language-server", -- lua lsp
         "stylua", -- lua formatter
       },
@@ -46,12 +45,9 @@ local plugins = {
   },
   {
     "Pocco81/auto-save.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
-      require("auto-save").setup(
-        -- your config goes here
-        -- or just leave it empty :)
-      )
+      require("auto-save").setup(require "custom.configs.auto-save-config")
     end,
   },
   -- 可视化git-blame
@@ -119,7 +115,7 @@ local plugins = {
   },
   {
     "folke/noice.nvim",
-    -- enabled = false,
+    enabled = false,
     event = "VeryLazy",
     opts = {
       -- add any options here
