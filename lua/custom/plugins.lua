@@ -1,14 +1,14 @@
 -- LSP
 local plugins = {
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "custom.configs.lspconfig"
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   config = function()
+  --     require "custom.configs.lspconfig"
+  --   end,
+  -- },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
+    init = function()
       -- 加载lsp的key-mapping
       require("core.utils").load_mappings "lspconfig"
 
@@ -20,14 +20,22 @@ local plugins = {
         -- The first entry (without a key) will be the default handler
         -- and will be called for each installed server that doesn't have
         -- a dedicated handler.
-        function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {}
-        end,
+        -- function(server_name) -- default handler (optional)
+        --   require("lspconfig")[server_name].setup {}
+        -- end,
         -- Next, you can provide a dedicated handler for specific servers.
         -- For example, a handler override for the `rust_analyzer`:
-        -- ["clangd"] = function()
-        --   require("lspconfig").clangd.setup {}
-        -- end,
+        ["clangd"] = function()
+          require("lspconfig").clangd.setup {
+            filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+          }
+        end,
+        ["bufls"] = function()
+          require("lspconfig").bufls.setup {}
+        end,
+        ["pyright"] = function()
+          require("lspconfig").pyright.setup {}
+        end,
       }
     end,
   },
@@ -45,12 +53,9 @@ local plugins = {
   },
   {
     "Pocco81/auto-save.nvim",
-    event = 'VeryLazy',
+    event = "VeryLazy",
     config = function()
-      require("auto-save").setup(
-        -- your config goes here or just leave it empty :)
-        require("custom.configs.auto-save-config")
-      )
+      require("auto-save").setup(require "custom.configs.auto-save-config")
     end,
   },
   -- 可视化git-blame
@@ -189,14 +194,23 @@ local plugins = {
     enabled = false,
   },
   {
-    'gorbit99/codewindow.nvim',
+    "gorbit99/codewindow.nvim",
     init = function()
-      local codewindow = require('codewindow')
+      local codewindow = require "codewindow"
       codewindow.setup(require "custom.configs.codewindow-config")
       codewindow.apply_default_keybinds()
     end,
   },
-
+  {
+    "petertriho/nvim-scrollbar",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+    },
+    init = function()
+      require("scrollbar").setup(require "custom.configs.scrollbar.nvim-scrollbar-config")
+      require("scrollbar.handlers.gitsigns").setup()
+    end,
+  },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件

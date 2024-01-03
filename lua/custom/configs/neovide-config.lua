@@ -1,11 +1,11 @@
   -- font
-  vim.o.guifont = "Source Code Pro:h14"
-  vim.opt.linespace = 8
-  vim.g.neovide_scale_factor = 0.9
+  vim.o.guifont = "FiraMono Nerd Font:h12"
+  vim.opt.linespace = 7
+  vim.g.neovide_scale_factor = 1.0
 
   -- floating blur amount
-  vim.g.neovide_floating_blur_amount_x = 0.0
-  vim.g.neovide_floating_blur_amount_y = 0.0
+  vim.g.neovide_floating_blur_amount_x = 20.0
+  vim.g.neovide_floating_blur_amount_y = 20.0
 
   -- floating shadow
   vim.g.neovide_floating_shadow = true
@@ -32,7 +32,7 @@
 
   -- padding
   vim.g.neovide_padding_top = 6
-  vim.g.neovide_padding_bottom = -10
+  vim.g.neovide_padding_bottom = 0
   vim.g.neovide_padding_right = 6
 
   vim.g.neovide_padding_left = 6

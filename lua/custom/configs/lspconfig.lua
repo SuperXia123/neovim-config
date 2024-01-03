@@ -15,7 +15,7 @@ lspconfig.clangd.setup {
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
 }
 
-lspconfig.pyright.setup {}
-
+-- lspconfig.pyright.setup {}
 lspconfig.bufls.setup {}
+-- lspconfig.buf.setup {}
 

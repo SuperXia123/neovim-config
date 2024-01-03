@@ -1,5 +1,15 @@
-function SearchSymbols()
-  vim.cmd "Telescope lsp_document_symbols symbol_width=60 show_line=false"
+function GetVisualSelection()
+  vim.cmd 'noau normal! "vy"'
+  local text = vim.fn.getreg "v"
+  vim.fn.setreg("v", {})
+
+  text = string.gsub(text, "\n", "")
+  text = string.gsub(text, " ", "\\ ")
+  if #text > 0 then
+    return text
+  else
+    return ""
+  end
 end
 
 function TerminateDebug()
@@ -29,9 +39,32 @@ M.abc = {
     -- 使用telescope搜索文件大纲
     -- about symbols_width and show_line see:
     -- https://www.reddit.com/r/neovim/comments/13f425s/help_needed_with_telescopebuiltinlsp_document/
-    ["<F12>"] = { ":lua SearchSymbols() <CR>", "symbols outline" },
+    ["<F12>"] = {
+      function()
+        vim.cmd "Telescope lsp_document_symbols symbol_width=60 show_line=false"
+      end,
+      "symbols outline",
+    },
+    -- jk移动屏幕自动聚焦中间
     ["j"] = { "jzz", "jump down and focus", opts = { nowait = true } },
     ["k"] = { "kzz", "jump up and focus", opts = { nowait = true } },
+  },
+
+  v = {
+    -- see ref: https://www.reddit.com/r/neovim/comments/p8wtmn/comment/i7jubzh/?utm_source=share&utm_medium=web2x&context=3
+    -- ["<leader>fw"] = {
+    --   "\"zy<cmd>exec 'Telescope live_grep default_text=' . escape(@z, ' ')<cr>",
+    --   "search selected content",
+    --   opts = { noremap = true, silent = true },
+    -- },
+    -- see ref: https://github.com/nvim-telescope/telescope.nvim/issues/1923#issuecomment-1123136065
+    ["<leader>fw"] = {
+      function()
+        vim.cmd("Telescope grep_string default_text=" .. GetVisualSelection())
+      end,
+      "search selected content",
+      opts = { noremap = true, silent = true },
+    },
   },
 
   i = {
