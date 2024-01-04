@@ -1,14 +1,14 @@
 -- LSP
 local plugins = {
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "custom.configs.lspconfig"
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   config = function()
+  --     require "custom.configs.lspconfig"
+  --   end,
+  -- },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
+    init = function()
       -- 加载lsp的key-mapping
       require("core.utils").load_mappings "lspconfig"
 
@@ -20,14 +20,22 @@ local plugins = {
         -- The first entry (without a key) will be the default handler
         -- and will be called for each installed server that doesn't have
         -- a dedicated handler.
-        function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {}
-        end,
+        -- function(server_name) -- default handler (optional)
+        --   require("lspconfig")[server_name].setup {}
+        -- end,
         -- Next, you can provide a dedicated handler for specific servers.
         -- For example, a handler override for the `rust_analyzer`:
-        -- ["clangd"] = function()
-        --   require("lspconfig").clangd.setup {}
-        -- end,
+        ["clangd"] = function()
+          require("lspconfig").clangd.setup {
+            filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+          }
+        end,
+        ["bufls"] = function()
+          require("lspconfig").bufls.setup {}
+        end,
+        ["pyright"] = function()
+          require("lspconfig").pyright.setup {}
+        end,
       }
     end,
   },
