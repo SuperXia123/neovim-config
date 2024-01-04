@@ -201,6 +201,16 @@ local plugins = {
       codewindow.apply_default_keybinds()
     end,
   },
+  {
+    "petertriho/nvim-scrollbar",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+    },
+    init = function()
+      require("scrollbar").setup(require "custom.configs.scrollbar.nvim-scrollbar-config")
+      require("scrollbar.handlers.gitsigns").setup()
+    end,
+  },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
