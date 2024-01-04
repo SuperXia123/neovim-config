@@ -24,5 +24,5 @@ vim.cmd "autocmd FileChangedShellPost * echohl WarningMsg | echo 'File changed o
 
 -- neovide配置
 if vim.g.neovide then
-  require "custom.configs.neovide-config"
+  require "custom.helpers.neovide-config"
 end
