@@ -1,8 +1,8 @@
--- 设置代码对齐线
-vim.opt.colorcolumn = "81"
+-- nvim选项
+require "custom.helpers.nvim-options"
 
 -- 控制是否开启blamer
-ENABLE_BLAMER = true
+ENABLE_BLAMER = false
 
 -- 对spell-checking进行设置
 require "custom.configs.spellchecker-config"
