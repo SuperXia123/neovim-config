@@ -13,7 +13,7 @@ local plugins = {
       require("core.utils").load_mappings "lspconfig"
 
       require("mason-lspconfig").setup {
-        ensure_installed = { "clangd", "pyright" },
+        -- ensure_installed = { "clangd", "pyright" },
       }
 
       require("mason-lspconfig").setup_handlers {
