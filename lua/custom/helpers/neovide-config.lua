@@ -1,6 +1,6 @@
   -- font
-  vim.o.guifont = "FiraMono Nerd Font:h12"
-  vim.opt.linespace = 7
+  vim.o.guifont = "FiraCode Nerd Font:h12"
+  vim.opt.linespace = 4
   vim.g.neovide_scale_factor = 1.0
 
   -- floating blur amount
