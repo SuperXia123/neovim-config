@@ -13,6 +13,7 @@ lspconfig.clangd.setup {
   end,
   capacities = capacities,
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+  cmd = { "clangd", "-j=12", "--clang-tidy", "--clang-tidy-checks=-*" },
 }
 
 lspconfig.pyright.setup {}
