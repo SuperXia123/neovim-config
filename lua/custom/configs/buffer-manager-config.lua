@@ -9,7 +9,7 @@ return {
   focus_alternate_buffer = true,
   width = 0.5,
   height = 0.5,
-  short_file_names = false,
+  short_file_names = true,
   short_term_names = false,
   loop_nav = true,
   highlight = "",
