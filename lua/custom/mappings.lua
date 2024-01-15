@@ -43,7 +43,14 @@ M.abc = {
       function()
         vim.cmd "Telescope lsp_document_symbols symbol_width=60 show_line=false"
       end,
-      "symbols outline",
+      "Symbols outline",
+    },
+    -- 使用telescope搜索上一个query
+    ["<leader>fl"] = {
+      function()
+        require("telescope.builtin").resume()
+      end,
+      "Find last query",
     },
     -- jk移动屏幕自动聚焦中间
     ["j"] = { "jzz", "jump down and focus", opts = { nowait = true } },
