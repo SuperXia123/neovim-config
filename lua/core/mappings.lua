@@ -158,7 +158,7 @@ M.lspconfig = {
       "LSP implementation",
     },
 
-    ["<leader>ls"] = {
+    ["<C-s>"] = {
       function()
         vim.lsp.buf.signature_help()
       end,
@@ -193,7 +193,7 @@ M.lspconfig = {
       "LSP references",
     },
 
-    ["<leader>lf"] = {
+    ["<leader>ld"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -240,6 +240,15 @@ M.lspconfig = {
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
       "List workspace folders",
+    },
+  },
+
+  i = {
+    ["<C-s>"] = {
+      function()
+        vim.lsp.buf.signature_help()
+      end,
+      "LSP signature help",
     },
   },
 
