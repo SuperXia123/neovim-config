@@ -65,6 +65,9 @@ local options = {
       require("luasnip").lsp_expand(args.body)
     end,
   },
+  experimental = {
+    ghost_text = true,
+  },
 
   formatting = formatting_style,
 
