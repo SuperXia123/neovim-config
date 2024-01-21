@@ -211,6 +211,16 @@ local plugins = {
       require("scrollbar.handlers.gitsigns").setup()
     end,
   },
+  {
+    "ahmedkhalf/project.nvim",
+    init = function()
+      require("project_nvim").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
