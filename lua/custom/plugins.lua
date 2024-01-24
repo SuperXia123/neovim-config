@@ -221,6 +221,13 @@ local plugins = {
       }
     end
   },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    event = "VeryLazy",
+    config = function()
+      require('nvim-treesitter.configs').setup {}
+    end
+  },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
