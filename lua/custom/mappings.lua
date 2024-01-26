@@ -52,6 +52,13 @@ M.abc = {
       end,
       "Find last query",
     },
+    ["<leader>fp"] = {
+      function()
+        vim.cmd("Telescope projects")
+      end,
+      "Search projects",
+      opts = { noremap = true, silent = true },
+    },
     -- jk移动屏幕自动聚焦中间
     ["j"] = { "jzz", "jump down and focus", opts = { nowait = true } },
     ["k"] = { "kzz", "jump up and focus", opts = { nowait = true } },
