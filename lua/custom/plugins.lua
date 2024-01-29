@@ -228,6 +228,15 @@ local plugins = {
       require('nvim-treesitter.configs').setup {}
     end
   },
+  {
+    "willothy/flatten.nvim",
+    config = true,
+    -- or pass configuration with
+    -- opts = {  }
+    -- Ensure that it runs first to minimize delay when opening file from terminal
+    lazy = false,
+    priority = 1001,
+  },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
