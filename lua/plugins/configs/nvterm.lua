@@ -1,5 +1,5 @@
 local float_width = 0.85
-local float_height = 0.7
+local float_height = 0.8
 
 local opts = {
   terminals = {
