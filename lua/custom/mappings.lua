@@ -86,6 +86,18 @@ M.abc = {
   },
 }
 
+M.copilot = {
+  i = {
+    ["<C-q>"] = {
+      function()
+        vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+      end,
+      "Copilot Accept",
+      {replace_keycodes = true, nowait=true, silent=true, expr=true, noremap=true}
+    }
+  }
+}
+
 M.neovide = {
   n = {
     ["<F11>"] = { ":lua vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen <CR>", "neovide fullscreen" },
