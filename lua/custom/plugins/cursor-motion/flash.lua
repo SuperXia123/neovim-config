@@ -1,4 +1,30 @@
-return {
+--------------------------------------------------------------------------------
+-- LAZYVIM CONFIG
+--------------------------------------------------------------------------------
+local function load_plugin(config)
+  return {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    config = function()
+      require("flash").setup(config)
+    end,
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  }
+end
+
+--------------------------------------------------------------------------------
+-- PLUGIN CONFIG
+--------------------------------------------------------------------------------
+local config = {
   -- labels = "abcdefghijklmnopqrstuvwxyz",
   labels = "asdfghjklqwertyuiopzxcvbnm",
   search = {
@@ -8,20 +34,20 @@ return {
     forward = true,
     -- when `false`, find only matches in the given direction
     wrap = true,
-    ---@type Flash.Pattern.Mode
-    -- Each mode will take ignorecase and smartcase into account.
+    ---@type flash.pattern.mode
+    -- each mode will take ignorecase and smartcase into account.
     -- * exact: exact match
     -- * search: regular search
     -- * fuzzy: fuzzy search
     -- * fun(str): custom function that returns a pattern
-    --   For example, to only match at the beginning of a word:
+    --   for example, to only match at the beginning of a word:
     --   mode = function(str)
     --     return "\\<" .. str
     --   end,
     mode = "exact",
     -- behave like `incsearch`
     incremental = false,
-    -- Excluded filetypes and custom window filters
+    -- excluded filetypes and custom window filters
     ---@type (string|fun(win:window))[]
     exclude = {
       "notify",
@@ -33,12 +59,12 @@ return {
         return not vim.api.nvim_win_get_config(win).focusable
       end,
     },
-    -- Optional trigger character that needs to be typed before
-    -- a jump label can be used. It's NOT recommended to set this,
+    -- optional trigger character that needs to be typed before
+    -- a jump label can be used. it's not recommended to set this,
     -- unless you know what you're doing
     trigger = "",
-    -- max pattern length. If the pattern length is equal to this
-    -- labels will no longer be skipped. When it exceeds this length
+    -- max pattern length. if the pattern length is equal to this
+    -- labels will no longer be skipped. when it exceeds this length
     -- it will either end in a jump or terminate the search
     max_length = false, ---@type number|false
   },
@@ -55,11 +81,11 @@ return {
     nohlsearch = false,
     -- automatically jump when there is only one match
     autojump = false,
-    -- You can force inclusive/exclusive jumps by setting the
-    -- `inclusive` option. By default it will be automatically
+    -- you can force inclusive/exclusive jumps by setting the
+    -- `inclusive` option. by default it will be automatically
     -- set based on the mode.
     inclusive = nil, ---@type boolean?
-    -- jump position offset. Not used for range jumps.
+    -- jump position offset. not used for range jumps.
     -- 0: default
     -- 1: when pos == "end" and pos < current position
     offset = nil, ---@type number
@@ -70,7 +96,7 @@ return {
     -- add any labels with the correct case here, that you want to exclude
     exclude = "",
     -- add a label for the first match in the current window.
-    -- you can always jump to the first match with `<CR>`
+    -- you can always jump to the first match with `<cr>`
     current = true,
     -- show the label after the match
     after = true, ---@type boolean|number[]
@@ -79,65 +105,65 @@ return {
     -- position of the label extmark
     style = "overlay", ---@type "eol" | "overlay" | "right_align" | "inline"
     -- flash tries to re-use labels that were already assigned to a position,
-    -- when typing more characters. By default only lower-case labels are re-used.
+    -- when typing more characters. by default only lower-case labels are re-used.
     reuse = "lowercase", ---@type "lowercase" | "all" | "none"
     -- for the current window, label targets closer to the cursor first
     distance = true,
     -- minimum pattern length to show labels
-    -- Ignored for custom labelers.
+    -- ignored for custom labelers.
     min_pattern_length = 0,
-    -- Enable this to use rainbow colors to highlight labels
-    -- Can be useful for visualizing Treesitter ranges.
+    -- enable this to use rainbow colors to highlight labels
+    -- can be useful for visualizing treesitter ranges.
     rainbow = {
       enabled = true,
       -- number between 1 and 9
       shade = 5,
     },
-    -- With `format`, you can change how the label is rendered.
-    -- Should return a list of `[text, highlight]` tuples.
-    ---@class Flash.Format
-    ---@field state Flash.State
-    ---@field match Flash.Match
+    -- with `format`, you can change how the label is rendered.
+    -- should return a list of `[text, highlight]` tuples.
+    ---@class flash.format
+    ---@field state flash.state
+    ---@field match flash.match
     ---@field hl_group string
     ---@field after boolean
-    ---@type fun(opts:Flash.Format): string[][]
+    ---@type fun(opts:flash.format): string[][]
     format = function(opts)
       return { { opts.match.label, opts.hl_group } }
     end,
   },
   highlight = {
-    -- show a backdrop with hl FlashBackdrop
+    -- show a backdrop with hl flashbackdrop
     backdrop = true,
-    -- Highlight the search matches
+    -- highlight the search matches
     matches = true,
     -- extmark priority
     priority = 5000,
     groups = {
-      match = "FlashMatch",
-      current = "FlashCurrent",
-      backdrop = "FlashBackdrop",
-      label = "FlashLabel",
+      match = "flashmatch",
+      current = "flashcurrent",
+      backdrop = "flashbackdrop",
+      label = "flashlabel",
     },
   },
   -- action to perform when picking a label.
   -- defaults to the jumping logic depending on the mode.
-  ---@type fun(match:Flash.Match, state:Flash.State)|nil
+  ---@type fun(match:flash.match, state:flash.state)|nil
   action = nil,
   -- initial pattern to use when opening flash
   pattern = "",
-  -- When `true`, flash will try to continue the last search
+  -- when `true`, flash will try to continue the last search
   continue = false,
-  -- Set config to a function to dynamically change the config
-  config = nil, ---@type fun(opts:Flash.Config)|nil
-  -- You can override the default options for a specific mode.
-  -- Use it with `require("flash").jump({mode = "forward"})`
-  ---@type table<string, Flash.Config>
+  -- set config to a function to dynamically change the config
+  config = nil, ---@type fun(opts:flash.config)|nil
+  -- you can override the default options for a specific mode.
+  -- use it with `require("flash").jump({mode = "forward"})`
+  ---@type table<string, flash.config>
   modes = {
     -- options used when flash is activated through
     -- a regular search with `/` or `?`
     search = {
       -- when `true`, flash will be activated during regular search by default.
-      -- You can always toggle when searching with `require("flash").toggle()`
+      -- you can always toggle when searching with `require("flash").toggle()`
       enabled = true,
       highlight = { backdrop = false },
       jump = { history = true, register = true, nohlsearch = true },
@@ -148,13 +174,13 @@ return {
       },
     },
     -- options used when flash is activated through
-    -- `f`, `F`, `t`, `T`, `;` and `,` motions
+    -- `f`, `f`, `t`, `t`, `;` and `,` motions
     char = {
       enabled = true,
-      -- dynamic configuration for ftFT motions
+      -- dynamic configuration for ftft motions
       config = function(opts)
         -- autohide flash when in operator-pending mode
-        opts.autohide = opts.autohide or (vim.fn.mode(true):find("no") and vim.v.operator == "y")
+        opts.autohide = opts.autohide or (vim.fn.mode(true):find "no" and vim.v.operator == "y")
 
         -- disable jump labels when not enabled, when using a count,
         -- or when recording/executing registers
@@ -163,7 +189,7 @@ return {
           and vim.fn.reg_executing() == ""
           and vim.fn.reg_recording() == ""
 
-        -- Show jump labels only in operator-pending mode
+        -- show jump labels only in operator-pending mode
         -- opts.jump_labels = vim.v.count == 0 and vim.fn.mode(true):find("o")
       end,
       -- hide after jump when not using jump labels
@@ -172,16 +198,16 @@ return {
       jump_labels = false,
       -- set to `false` to use the current line only
       multi_line = true,
-      -- When using jump labels, don't use these keys
-      -- This allows using those keys directly after the motion
+      -- when using jump labels, don't use these keys
+      -- this allows using those keys directly after the motion
       label = { exclude = "hjkliardc" },
       -- by default all keymaps are enabled, but you can disable some of them,
       -- by removing them from the list.
-      -- If you rather use another key, you can map them
-      -- to something else, e.g., { [";"] = "L", [","] = H }
-      keys = { "f", "F", "t", "T", ";", "," },
-      ---@alias Flash.CharActions table<string, "next" | "prev" | "right" | "left">
-      -- The direction for `prev` and `next` is determined by the motion.
+      -- if you rather use another key, you can map them
+      -- to something else, e.g., { [";"] = "l", [","] = h }
+      keys = { "f", "f", "t", "t", ";", "," },
+      ---@alias flash.charactions table<string, "next" | "prev" | "right" | "left">
+      -- the direction for `prev` and `next` is determined by the motion.
       -- `left` and `right` are always left and right.
       char_actions = function(motion)
         return {
@@ -226,7 +252,7 @@ return {
   -- for regular jumps
   prompt = {
     enabled = true,
-    prefix = { { "⚡", "FlashPromptIcon" } },
+    prefix = { { "⚡", "flashprompticon" } },
     win_config = {
       relative = "editor",
       width = 1, -- when <=1 it's a percentage of the editor width
@@ -241,10 +267,12 @@ return {
     -- restore window views and cursor position
     -- after doing a remote operation
     restore = false,
-    -- For `jump.pos = "range"`, this setting is ignored.
+    -- for `jump.pos = "range"`, this setting is ignored.
     -- `true`: always enter a new motion when doing a remote operation
     -- `false`: use the window's cursor position and jump target
     -- `nil`: act as `true` for remote windows, `false` for the current window
     motion = false,
   },
 }
+
+return load_plugin(config)
