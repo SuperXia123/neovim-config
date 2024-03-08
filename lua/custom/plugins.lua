@@ -27,7 +27,7 @@ local plugins = {
         -- For example, a handler override for the `rust_analyzer`:
         ["clangd"] = function()
           require("lspconfig").clangd.setup {
-            filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
           }
         end,
         ["bufls"] = function()
@@ -39,25 +39,8 @@ local plugins = {
       }
     end,
   },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "clang-format", --cpp formatter
-        "clangd", -- cpp lsp
-        "cpptools", -- cpp dap, including gdb
-        "lua-language-server", -- lua lsp
-        "stylua", -- lua formatter
-      },
-    },
-  },
-  {
-    "Pocco81/auto-save.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("auto-save").setup(require "custom.configs.auto-save-config")
-    end,
-  },
+  require "custom.plugins.formatter.formatter",
+  require "custom.plugins.auto-save.auto-save",
   -- 可视化git-blame
   {
     "APZelos/blamer.nvim",
@@ -72,14 +55,6 @@ local plugins = {
     command = "DiffViewOpen",
     init = function()
       require("diffview").setup(require "custom.configs.diffview-config")
-    end,
-  },
-  -- formatter
-  {
-    "mhartington/formatter.nvim",
-    command = "Format",
-    init = function()
-      require("formatter").setup(require "custom.configs.formatter-config")
     end,
   },
   -- DAP(Debug Adaptor Protocal)相关
@@ -201,16 +176,7 @@ local plugins = {
       codewindow.apply_default_keybinds()
     end,
   },
-  {
-    "petertriho/nvim-scrollbar",
-    dependencies = {
-      "lewis6991/gitsigns.nvim",
-    },
-    init = function()
-      require("scrollbar").setup(require "custom.configs.scrollbar.nvim-scrollbar-config")
-      require("scrollbar.handlers.gitsigns").setup()
-    end,
-  },
+  require "custom.plugins.scroll-bar.nvim-scrollbar",
   {
     "ahmedkhalf/project.nvim",
     init = function()
@@ -219,14 +185,14 @@ local plugins = {
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
       }
-    end
+    end,
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
     event = "VeryLazy",
     config = function()
-      require('nvim-treesitter.configs').setup {}
-    end
+      require("nvim-treesitter.configs").setup {}
+    end,
   },
   {
     "willothy/flatten.nvim",
@@ -238,23 +204,6 @@ local plugins = {
     lazy = false,
     priority = 1001,
   },
-  -- {
-  --   "folke/flash.nvim",
-  --   event = "VeryLazy",
-  --   ---@type Flash.Config
-  --   opts = {},
-  --   config = function()
-  --     require("flash").setup(require "custom.configs.flash-config")
-  --   end,
-  --   -- stylua: ignore
-  --   keys = {
-  --     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-  --     { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-  --     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-  --     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-  --     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-  --   },
-  -- },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
@@ -321,20 +270,7 @@ local plugins = {
       }
     end,
   },
+  require "custom.plugins.cursor-motion.flash",
 }
-
-
--- local lfs = require('lfs')
---
--- -- local result = {}
--- local plugin_path = 'custom.plugins1'
--- for file in lfs.dir(plugin_path) do
---   if file:match('%.lua$') then
---     local ret = dofile(plugin_path .. file)
---     table.insert(plugins, ret)
---   end
--- end
-
-
 
 return plugins

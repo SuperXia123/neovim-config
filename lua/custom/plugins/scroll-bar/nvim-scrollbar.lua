@@ -1,4 +1,24 @@
-return {
+--------------------------------------------------------------------------------
+-- LAZYVIM CONFIG
+--------------------------------------------------------------------------------
+local function load_plugin(config)
+  return {
+    "petertriho/nvim-scrollbar",
+    event = "VeryLazy",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+    },
+    config = function()
+      require("scrollbar").setup(config)
+      require("scrollbar.handlers.gitsigns").setup()
+    end,
+  }
+end
+
+--------------------------------------------------------------------------------
+-- PLUGIN CONFIG
+--------------------------------------------------------------------------------
+local config = {
   show = true,
   show_in_active_only = false,
   set_highlights = true,
@@ -143,3 +163,5 @@ return {
     ale = false, -- Requires ALE
   },
 }
+
+return load_plugin(config)
