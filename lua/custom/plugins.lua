@@ -238,23 +238,23 @@ local plugins = {
     lazy = false,
     priority = 1001,
   },
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-    config = function()
-      require("flash").setup(require "custom.configs.flash-config")
-    end,
-    -- stylua: ignore
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
-  },
+  -- {
+  --   "folke/flash.nvim",
+  --   event = "VeryLazy",
+  --   ---@type Flash.Config
+  --   opts = {},
+  --   config = function()
+  --     require("flash").setup(require "custom.configs.flash-config")
+  --   end,
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+  --     { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+  --     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+  --     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+  --     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  --   },
+  -- },
 
   -----------------------------------------------------------------------------
   -- 以下为暂时关闭的插件
@@ -322,5 +322,19 @@ local plugins = {
     end,
   },
 }
+
+
+-- local lfs = require('lfs')
+--
+-- -- local result = {}
+-- local plugin_path = 'custom.plugins1'
+-- for file in lfs.dir(plugin_path) do
+--   if file:match('%.lua$') then
+--     local ret = dofile(plugin_path .. file)
+--     table.insert(plugins, ret)
+--   end
+-- end
+
+
 
 return plugins
