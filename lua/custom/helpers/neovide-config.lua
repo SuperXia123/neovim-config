@@ -1,5 +1,5 @@
   -- font
-  vim.o.guifont = "FiraCode Nerd Font:h12"
+  vim.o.guifont = "FiraCode Nerd Font:h16"
   vim.opt.linespace = 4
   vim.g.neovide_scale_factor = 1.0
 
