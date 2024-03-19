@@ -6,42 +6,12 @@ local plugins = {
   --     require "custom.configs.lspconfig"
   --   end,
   -- },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    init = function()
-      -- 加载lsp的key-mapping
-      require("core.utils").load_mappings "lspconfig"
-
-      require("mason-lspconfig").setup {
-        -- ensure_installed = { "clangd", "pyright" },
-      }
-
-      require("mason-lspconfig").setup_handlers {
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        -- function(server_name) -- default handler (optional)
-        --   require("lspconfig")[server_name].setup {}
-        -- end,
-        -- Next, you can provide a dedicated handler for specific servers.
-        -- For example, a handler override for the `rust_analyzer`:
-        ["clangd"] = function()
-          require("lspconfig").clangd.setup {
-            filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-          }
-        end,
-        ["bufls"] = function()
-          require("lspconfig").bufls.setup {}
-        end,
-        ["pyright"] = function()
-          require("lspconfig").pyright.setup {}
-        end,
-      }
-    end,
-  },
+  require "custom.plugins.lsp.mason-lspconfig",
   require "custom.plugins.formatter.formatter",
   require "custom.plugins.auto-save.auto-save",
+  require "custom.plugins.buffer-manager.buffer_manager",
   -- 可视化git-blame
+  { "nvim-neotest/nvim-nio" },  -- requirement of dap-ui
   {
     "APZelos/blamer.nvim",
     lazy = false,
@@ -57,15 +27,16 @@ local plugins = {
       require("diffview").setup(require "custom.configs.diffview-config")
     end,
   },
-  -- DAP(Debug Adaptor Protocal)相关
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require("core.utils").load_mappings "dap"
-      require "custom.configs.dap.dap-adapters"
-      require "custom.configs.dap.dap-symbols"
-    end,
-  },
+  -- -- DAP(Debug Adaptor Protocal)相关
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   config = function()
+  --     require("core.utils").load_mappings "dap"
+  --     require "custom.configs.dap.dap-adapters"
+  --     require "custom.configs.dap.dap-symbols"
+  --   end,
+  -- },
+  require "custom.plugins.dap.nvim-dap",
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
@@ -143,16 +114,6 @@ local plugins = {
         modes = { ":", "/", "?" },
       }
       require "custom.configs.wilder-config"
-    end,
-  },
-  {
-    "j-morano/buffer_manager.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    init = function()
-      require("core.utils").load_mappings "buffer_manager"
-      require("buffer_manager").setup(require "custom.configs.buffer-manager-config")
     end,
   },
   -- multi-cursor
