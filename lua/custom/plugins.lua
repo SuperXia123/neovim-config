@@ -27,16 +27,16 @@ local plugins = {
       require("diffview").setup(require "custom.configs.diffview-config")
     end,
   },
-  -- -- DAP(Debug Adaptor Protocal)相关
-  -- {
-  --   "mfussenegger/nvim-dap",
-  --   config = function()
-  --     require("core.utils").load_mappings "dap"
-  --     require "custom.configs.dap.dap-adapters"
-  --     require "custom.configs.dap.dap-symbols"
-  --   end,
-  -- },
-  require "custom.plugins.dap.nvim-dap",
+  -- DAP(Debug Adaptor Protocal)相关
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("core.utils").load_mappings "dap"
+      require "custom.configs.dap.dap-adapters"
+      require "custom.configs.dap.dap-symbols"
+    end,
+  },
+  -- require "custom.plugins.dap.nvim-dap",
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",

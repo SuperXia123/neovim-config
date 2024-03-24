@@ -54,7 +54,7 @@ M.abc = {
     },
     ["<leader>fp"] = {
       function()
-        vim.cmd("Telescope projects")
+        vim.cmd "Telescope projects"
       end,
       "Search projects",
       opts = { noremap = true, silent = true },
@@ -83,19 +83,26 @@ M.abc = {
 
   i = {
     ["jk"] = { "<ESC>", "escape insert mode", opts = { nowait = true } },
+    ["<C-v>"] = { "<C-r>+", "Paste in insert mode", { noremap = true } },
   },
+
+  t = {
+    ["<C-v>"] = { "<C-\\><C-n>pa ", "Paste in terminal mode", { noremap = true } },
+  },
+
+  c = { ["<C-v>"] = { "<C-r>+", "Paste in insert mode", { noremap = true } } },
 }
 
 M.copilot = {
   i = {
     ["<C-q>"] = {
       function()
-        vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+        vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
       end,
       "Copilot Accept",
-      {replace_keycodes = true, nowait=true, silent=true, expr=true, noremap=true}
-    }
-  }
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true },
+    },
+  },
 }
 
 M.neovide = {
