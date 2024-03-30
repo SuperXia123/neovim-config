@@ -10,8 +10,19 @@ local plugins = {
   require "custom.plugins.formatter.formatter",
   require "custom.plugins.auto-save.auto-save",
   require "custom.plugins.buffer-manager.buffer_manager",
+  require "custom.plugins.git.lazygit",
   -- 可视化git-blame
-  { "nvim-neotest/nvim-nio" },  -- requirement of dap-ui
+  { "nvim-neotest/nvim-nio" }, -- requirement of dap-ui
+  {
+    "glacambre/firenvim",
+
+    -- Lazy load firenvim
+    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+    lazy = not vim.g.started_by_firenvim,
+    build = function()
+      vim.fn["firenvim#install"](0)
+    end,
+  },
   {
     "APZelos/blamer.nvim",
     lazy = false,
