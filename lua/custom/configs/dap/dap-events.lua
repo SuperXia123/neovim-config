@@ -10,6 +10,7 @@ end
 dap.listeners.after.event_initialized["dapui"] = function()
   pcall(close_nvim_tree)
   vim.g.blamer_enabled = 0
+  vim.opt.colorcolumn = ""
   dapui.open()
 end
 

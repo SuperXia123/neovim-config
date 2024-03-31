@@ -4,7 +4,7 @@
 local options = {
   -- backup = false,                          -- creates a backup filr
   -- clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
-  colorcolumn = "81",                           -- 代码对齐线
+  colorcolumn = COLOR_COLUMN,                           -- 代码对齐线
   cmdheight = 1,                              -- keep status bar position close to bottom
   -- completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   -- conceallevel = 0,                        -- so that `` is visible in markdown files

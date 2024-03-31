@@ -19,8 +19,9 @@ function TerminateDebug()
   vim.cmd "DapTerminate"
   -- close dap-ui
   require("dapui").close()
-  -- recover blamer status
+  -- recover
   vim.g.blamer_enabled = ENABLE_BLAMER
+  vim.opt.colorcolumn = COLOR_COLUMN
 end
 
 local M = {}
@@ -62,6 +63,35 @@ M.abc = {
     -- jk移动屏幕自动聚焦中间
     ["j"] = { "jzz", "jump down and focus", opts = { nowait = true } },
     ["k"] = { "kzz", "jump up and focus", opts = { nowait = true } },
+    -- adjust window size
+    ["<A-Right>"] = {
+      function()
+        vim.cmd "vertical resize +5"
+      end,
+      "vertical size increase 5",
+      opts = { silent = true },
+    },
+    ["<A-Left>"] = {
+      function()
+        vim.cmd "vertical resize -5"
+      end,
+      "vertical size decrease 5",
+      opts = { silent = true },
+    },
+    ["<A-Up>"] = {
+      function()
+        vim.cmd "resize +5"
+      end,
+      "vertical size increase 5",
+      opts = { silent = true },
+    },
+    ["<A-Down>"] = {
+      function()
+        vim.cmd "resize -5"
+      end,
+      "vertical size decrease 5",
+      opts = { silent = true },
+    },
   },
 
   v = {
@@ -143,6 +173,13 @@ M.dap = {
     ["<F7>"] = {
       "<cmd> DapStepInto <CR>",
       "Debug step into",
+    },
+    -- hover window to evaluate expression
+    ["<leader>de"] = {
+      function()
+        require("dapui").eval()
+      end,
+      "Evaluate the variable under cursor",
     },
   },
   i = {},

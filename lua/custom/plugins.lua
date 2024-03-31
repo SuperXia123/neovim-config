@@ -11,6 +11,7 @@ local plugins = {
   require "custom.plugins.auto-save.auto-save",
   require "custom.plugins.buffer-manager.buffer_manager",
   require "custom.plugins.git.lazygit",
+  require "custom.plugins.scroll-bar.nvim-scrollbar",
   -- 可视化git-blame
   { "nvim-neotest/nvim-nio" }, -- requirement of dap-ui
   {
@@ -38,16 +39,8 @@ local plugins = {
       require("diffview").setup(require "custom.configs.diffview-config")
     end,
   },
-  -- DAP(Debug Adaptor Protocal)相关
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require("core.utils").load_mappings "dap"
-      require "custom.configs.dap.dap-adapters"
-      require "custom.configs.dap.dap-symbols"
-    end,
-  },
-  -- require "custom.plugins.dap.nvim-dap",
+  require "custom.plugins.dap.nvim-dap",
+  require "custom.plugins.dap.nvim-dap-virtual-text",
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
@@ -57,13 +50,6 @@ local plugins = {
     config = function()
       require("dapui").setup()
       require "custom.configs.dap.dap-events"
-    end,
-  },
-  {
-    "SuperXia123/nvim-dap-virtual-text",
-    -- "theHamsta/nvim-dap-virtual-text"
-    init = function()
-      require("nvim-dap-virtual-text").setup(require "custom.configs.dap.dap-virtual-text")
     end,
   },
   -- runner
@@ -156,7 +142,6 @@ local plugins = {
       codewindow.apply_default_keybinds()
     end,
   },
-  require "custom.plugins.scroll-bar.nvim-scrollbar",
   {
     "ahmedkhalf/project.nvim",
     init = function()
@@ -174,6 +159,10 @@ local plugins = {
       require("nvim-treesitter.configs").setup {}
     end,
   },
+
+  -----------------------------------------------------------------------------
+  -- 以下为暂时关闭的插件
+  -----------------------------------------------------------------------------
   {
     "willothy/flatten.nvim",
     enabled = false,
@@ -184,10 +173,6 @@ local plugins = {
     lazy = false,
     priority = 1001,
   },
-
-  -----------------------------------------------------------------------------
-  -- 以下为暂时关闭的插件
-  -----------------------------------------------------------------------------
   -- 代码结构树option1
   {
     "simrat39/symbols-outline.nvim",

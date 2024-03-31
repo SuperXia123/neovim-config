@@ -1,8 +1,9 @@
--- nvim选项
-require "custom.helpers.nvim-options"
-
 -- 控制是否开启blamer
 ENABLE_BLAMER = false
+COLOR_COLUMN = "81"
+
+-- nvim选项
+require "custom.helpers.nvim-options"
 
 -- 对spell-checking进行设置
 require "custom.configs.spellchecker-config"
