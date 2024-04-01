@@ -13,15 +13,26 @@ function GetVisualSelection()
 end
 
 function TerminateDebug()
-  -- close dap-virtual-text
-  vim.cmd "DapVirtualTextExit"
   -- close dap
   vim.cmd "DapTerminate"
   -- close dap-ui
   require("dapui").close()
+  -- close dap-virtual-text
+  vim.cmd "DapVirtualTextExit"
   -- recover
   vim.g.blamer_enabled = ENABLE_BLAMER
   vim.opt.colorcolumn = COLOR_COLUMN
+end
+
+local function close_nvim_tree()
+  vim.cmd "NvimTreeClose"
+end
+function StartDebug()
+  pcall(close_nvim_tree)
+  vim.cmd "BlamerHide"
+  vim.opt.colorcolumn = ""
+  require("dapui").open()
+  vim.cmd "DapContinue"
 end
 
 local M = {}
@@ -156,7 +167,7 @@ M.dap = {
       "Start or continue the debugger",
     },
     ["<F9>"] = {
-      "<cmd> DapContinue <CR>",
+      ":lua StartDebug() <CR>",
       "Start or continue the debugger",
     },
     -- 结束调试
