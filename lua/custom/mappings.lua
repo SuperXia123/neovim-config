@@ -197,6 +197,27 @@ M.dap = {
   v = {},
 }
 
+M.trouble = {
+  -- only works when they are explicitly loaded
+  plugin = false,
+  n = {
+    ["<leader>tb"] = {
+      function()
+        require("trouble").toggle "document_diagnostics"
+      end,
+      "Trouble showing diagnostics of the document",
+    },
+    ["<leader>tr"] = {
+      function()
+        require("trouble").toggle "lsp_references"
+      end,
+      "Trouble showing all references of the variable",
+    },
+  },
+  i = {},
+  v = {},
+}
+
 M.runner = {
   -- only works when they are explicitly loaded
   plugin = true,

@@ -12,6 +12,7 @@ local plugins = {
   require "custom.plugins.buffer-manager.buffer_manager",
   require "custom.plugins.git.lazygit",
   require "custom.plugins.scroll-bar.nvim-scrollbar",
+  require "custom.plugins.coding-helpers.trouble",
   -- 可视化git-blame
   { "nvim-neotest/nvim-nio" }, -- requirement of dap-ui
   {
@@ -165,12 +166,12 @@ local plugins = {
   -----------------------------------------------------------------------------
   {
     "willothy/flatten.nvim",
+    lazy = false,
     enabled = false,
     config = true,
     -- or pass configuration with
     -- opts = {  }
     -- Ensure that it runs first to minimize delay when opening file from terminal
-    lazy = false,
     priority = 1001,
   },
   -- 代码结构树option1
