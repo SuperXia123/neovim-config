@@ -42,17 +42,7 @@ local plugins = {
   },
   require "custom.plugins.dap.nvim-dap",
   require "custom.plugins.dap.nvim-dap-virtual-text",
-  {
-    "rcarriga/nvim-dap-ui",
-    event = "VeryLazy",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-    config = function()
-      require("dapui").setup()
-      require "custom.configs.dap.dap-events"
-    end,
-  },
+  require "custom.plugins.dap.nvim-dap-ui",
   -- runner
   {
     "dasupradyumna/launch.nvim",
