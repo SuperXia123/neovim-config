@@ -202,10 +202,8 @@ M.trouble = {
   plugin = false,
   n = {
     ["<leader>tb"] = {
-      function()
-        require("trouble").toggle "document_diagnostics"
-      end,
-      "Trouble showing diagnostics of the document",
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      "Diagnostics (Trouble)",
     },
     ["<leader>tr"] = {
       function()
