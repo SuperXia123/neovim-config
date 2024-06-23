@@ -13,6 +13,7 @@ local plugins = {
   require "custom.plugins.git.lazygit",
   require "custom.plugins.scroll-bar.nvim-scrollbar",
   require "custom.plugins.coding-helpers.trouble",
+  require "custom.plugins.statusline.lualine",
   -- 可视化git-blame
   { "nvim-neotest/nvim-nio" }, -- requirement of dap-ui
   {

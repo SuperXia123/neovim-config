@@ -24,6 +24,7 @@ vim.cmd "autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' 
 vim.cmd "autocmd FileChangedShellPost * echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None"
 
 -- neovide配置
-if vim.g.neovide then
-  require "custom.helpers.neovide-config"
-end
+-- if vim.g.neovide then
+--   require "custom.helpers.neovide-config"
+-- end
+require "custom.helpers.neovide-config"
