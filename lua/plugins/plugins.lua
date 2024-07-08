@@ -32,4 +32,5 @@ return {
   require("plugins.dap.nvim-dap-virtual-text"),
   -- utils
   { "nvim-neotest/nvim-nio" },
+  require("plugins.remote.remote-nvim"),
 }
