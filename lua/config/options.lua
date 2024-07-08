@@ -12,8 +12,8 @@ vim.opt.relativenumber = false -- Relative line numbers
 -- neovide配置
 if vim.g.neovide then
   -- font
-  vim.o.guifont = "FiraCode Nerd Font:h12"
-  vim.opt.linespace = 5
+  vim.o.guifont = "JetBrainsMono Nerd Font:h12.5"
+  vim.opt.linespace = 4
   vim.g.neovide_scale_factor = 1.0
   -- floating blur amount
   vim.g.neovide_window_blurred = false
