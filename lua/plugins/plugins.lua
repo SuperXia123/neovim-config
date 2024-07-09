@@ -30,6 +30,8 @@ return {
   require("plugins.dap.nvim-dap"),
   require("plugins.dap.nvim-dap-ui"),
   require("plugins.dap.nvim-dap-virtual-text"),
+  -- replace
+  require("plugins.replace.nvim-rip-substitute"),
   -- utils
   { "nvim-neotest/nvim-nio" },
   require("plugins.remote.remote-nvim"),
