@@ -40,6 +40,13 @@ map("n", "<a-i>", lazyterm, { desc = "Floating terminal (root dir)" })
 map("t", "<a-i>", lazyterm, { desc = "Floating terminal (root dir)" })
 
 --------------------------------------------------------------------------------
+-- PASTE SHORTCUT
+--------------------------------------------------------------------------------
+map("i", "<C-v>", "<C-r>+", { desc = "Paste in insert mode" })
+map("c", "<C-v>", "<C-r>+", { desc = "Paste in command mode" })
+-- map("t", "<C-v>", "<C-r>+", { desc = "Paste in terminal mode" })
+
+--------------------------------------------------------------------------------
 -- TELESCOPE
 --------------------------------------------------------------------------------
 -- find project
