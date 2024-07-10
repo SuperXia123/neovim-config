@@ -36,10 +36,15 @@ local conditions = {
 -- Config
 local config = {
   options = {
-    -- Disable sections and component separators
+    -- component-separators
     component_separators = "",
-    section_separators = "",
-    theme = "material",
+    -- component_separators = { left = '', right = ''},
+
+    -- section-separators
+    -- section_separators = "",
+    section_separators = { left = '', right = ''},
+    theme = "material",  -- e.g. dracula/material, see shortcut of all themes:
+    -- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
     -- theme = {
     --   "material",
     --   -- We are going to use lualine_c an lualine_x as left and
