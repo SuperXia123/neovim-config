@@ -4,7 +4,7 @@ return {
   ------------------------------------------------------------------------------
   { "ellisonleao/gruvbox.nvim" },
   require("colorschemes.library.catppuccin"),
-  { "rebelot/kanagawa.nvim", lazy = false },
+  require("colorschemes.library.kanagawa"),
   { "navarasu/onedark.nvim" },
   { "scottmckendry/cyberdream.nvim", lazy = false },
 
@@ -14,7 +14,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "kanagawa",
     },
   },
 }
