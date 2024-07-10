@@ -2,10 +2,11 @@ return {
   ------------------------------------------------------------------------------
   -- specify to be installed colorscheme
   ------------------------------------------------------------------------------
-  -- gruvbox
   { "ellisonleao/gruvbox.nvim" },
-  { "catppuccin/nvim" },
-  {"rebelot/kanagawa.nvim"},
+  require("colorschemes.library.catppuccin"),
+  { "rebelot/kanagawa.nvim", lazy = false },
+  { "navarasu/onedark.nvim" },
+  { "scottmckendry/cyberdream.nvim", lazy = false },
 
   ------------------------------------------------------------------------------
   -- configure lazyvim to load specified theme
@@ -13,7 +14,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa",
+      colorscheme = "catppuccin",
     },
   },
 }
