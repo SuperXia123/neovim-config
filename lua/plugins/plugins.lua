@@ -19,6 +19,8 @@ return {
   require("plugins.ui.buffer-manager"),
   -- buffer-line
   require("plugins.ui.bufferline"),
+  -- scrollbar
+  require("plugins.ui.satellite"),
   -- telescope
   require("plugins.telescope.telescope"),
   -- blamer
