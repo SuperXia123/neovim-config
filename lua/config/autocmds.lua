@@ -23,8 +23,7 @@ local function load_workspace_rc_once()
   if FLAG_WORKSPACE_RC_LOADED then
     return
   end
-  pcall(load_workspace_rc)
-  FLAG_WORKSPACE_RC_LOADED = true
+  FLAG_WORKSPACE_RC_LOADED = pcall(load_workspace_rc)
 end
 
 local load_rc_group = vim.api.nvim_create_augroup("workspace_rc", { clear = true })
