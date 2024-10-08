@@ -11,6 +11,8 @@ return {
   require("plugins.auto-save.auto-save"),
   -- status line
   require("plugins.ui.lualine"),
+  -- scrollbar
+  require("plugins.scrollbar.nvim-scrollbar"),
   -- project management
   require("plugins.project.project"),
   -- formatting
